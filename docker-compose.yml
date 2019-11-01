@@ -5,7 +5,7 @@ services:
     ports:
       - "3306:3306"
     image: mysql:5.6
-    restart: always
+    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: insecure
       MYSQL_DATABASE: interview
