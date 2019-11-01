@@ -1,0 +1,11 @@
+version: '2'
+services:
+  db:
+    container_name: interview_db
+    ports:
+      - "3306:3306"
+    image: mysql:5.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: insecure
+      MYSQL_DATABASE: interview
