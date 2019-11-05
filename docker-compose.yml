@@ -5,6 +5,8 @@ services:
     ports:
       - "3306:3306"
     image: mysql:5.6
+    volumes:
+      - ./base.sql:/docker-entrypoint-initdb.d/base.sql
     restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: insecure
