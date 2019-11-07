@@ -21,7 +21,7 @@ app.controller('companiesCtrl', ['$scope', '$http', function companiesCtrl($scop
     
 
     $scope.addCompany = function(){
-	    var data = {name: $scope.newName, departments: $scope.newDeptName}
+	    var data = {name: $scope.newName, departments: $scope.newDeptName, employees: $scope.newEmpName}
         $http.post('http://127.0.0.1:5000/companies', data).then(function(response){
             getCompanies()
         })
