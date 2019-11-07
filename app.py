@@ -46,6 +46,7 @@ def get_companies():
 @app.route('/companies', methods=['POST'])
 def add_company():
     name = request.json.get('name')
+    departments = request.json.get('departments')
     if name is None:
         return 400, "Name is required"
 
@@ -53,6 +54,13 @@ def add_company():
     new_company.name = name
     db.session.add(new_company)
     db.session.commit()
+
+    for department in departments.split():
+        new_department = Department()
+        new_department.name = department
+        new_department.company_id = new_company.id
+        db.session.add(new_department)
+        db.session.commit()
     return "ASdfwf", 201
 
 
