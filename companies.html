@@ -16,4 +16,6 @@ Companies
 New Company Name: <input ng-model="newName" type="text" name="company_name"><br>
 New Company Departments (Space separated): <input ng-model="newDeptName" type="text" name="department_name"><br>
 New Company Employees (Comma separated): <input ng-model="newEmpName" type="text" name="employees_name"><br>
-<button ng-click="addCompany()">Add</button>
+<button ng-click="addCompany()">Add</button><br>
+ID of Employee to remove: <input ng-model="employeeId" type="string" name="del_emp_id"><br>
+<button ng-click="deleteEmployee()">Delete</button>

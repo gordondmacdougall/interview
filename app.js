@@ -27,7 +27,15 @@ app.controller('companiesCtrl', ['$scope', '$http', function companiesCtrl($scop
         })
     }
 
+    $scope.deleteEmployee = function(){
+	    var url = 'http://127.0.0.1:5000/employees/' + $scope.employeeId
+	    $http.delete(url).then(function(response){
+		   getCompanies()
+	})
+    }
+
     getCompanies()
+
 }]);
 
 function appConfig($routeProvider, $locationProvider) {
