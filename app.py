@@ -49,7 +49,7 @@ def get_companies():
             'id': company.id,
             'name': company.name,
             'departments': ', '.join([dep.name for dep in company.departments]),
-            'employees':', '.join([emp.first_name + ' ' + emp.second_name for emp in company.employees])
+            'employees':', '.join([str(emp.id) + ': ' + emp.first_name + ' ' + emp.second_name for emp in company.employees])
         } for company in companies]
     })
 
@@ -74,13 +74,20 @@ def add_company():
         db.session.commit()
 
     for employee in employees.split(','):
-        first_name, second_name = employee.split()[:2]
+        first_name, second_name = employee.rsplit(None,1)
         new_employee = Employee()
         new_employee.first_name = first_name
         new_employee.second_name = second_name
         new_employee.company_id = new_company.id
         db.session.add(new_employee)
         db.session.commit()
+    return "ASdfwf", 201
+
+@app.route('/employees/<employeeId>', methods=['DELETE'])
+def delete_employee(employeeId):
+    print employeeId
+    Employee.query.filter_by(id=employeeId).delete()
+    db.session.commit()
     return "ASdfwf", 201
 
 if __name__ == '__main__':
